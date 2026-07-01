@@ -1,0 +1,12 @@
+# Code::Blocks
+*.layout
+
+# Object files
+*.o
+
+# Build directories
+bin/
+obj/
+
+# Backup files
+*.bak
