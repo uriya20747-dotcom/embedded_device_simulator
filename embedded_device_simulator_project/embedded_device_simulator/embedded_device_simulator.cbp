@@ -34,25 +34,42 @@
 		<Unit filename="../../command_parser.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../command_parser.c.bak" />
 		<Unit filename="../../command_parser.h" />
-		<Unit filename="../../command_parser.h.bak" />
+		<Unit filename="../../device_controller.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../device_controller.h" />
+		<Unit filename="../../event_dispatcher.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../event_dispatcher.h" />
+		<Unit filename="../../event_queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../event_queue.h" />
+		<Unit filename="../../led_driver.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../led_driver.h" />
 		<Unit filename="../../logger.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../logger.c.bak" />
 		<Unit filename="../../logger.h" />
-		<Unit filename="../../logger.h.bak" />
 		<Unit filename="../../main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../main.c.bak" />
 		<Unit filename="../../state_machine.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../state_machine.c.bak" />
 		<Unit filename="../../state_machine.h" />
-		<Unit filename="../../state_machine.h.bak" />
+		<Unit filename="../../statistics_manager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../statistics_manager.h" />
+		<Unit filename="../../timer_manager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../timer_manager.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

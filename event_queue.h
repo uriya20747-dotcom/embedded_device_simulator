@@ -8,7 +8,11 @@ typedef enum {
     EVENT_STOP,
     EVENT_STATUS,
     EVENT_HELP,
-    EVENT_UNKNOWN
+	EVENT_ERROR,
+	EVENT_RESET,
+    EVENT_UNKNOWN,
+	EVENT_TIMEOUT,
+	EVENT_COUNT
 } EventType;
 
 void event_queue_init(void);
