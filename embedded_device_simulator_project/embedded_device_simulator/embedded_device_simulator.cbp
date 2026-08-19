@@ -47,6 +47,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../event_queue.h" />
+		<Unit filename="../../fault_manager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../fault_manager.h" />
 		<Unit filename="../../led_driver.c">
 			<Option compilerVar="CC" />
 		</Unit>

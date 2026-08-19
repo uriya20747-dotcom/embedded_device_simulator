@@ -30,8 +30,10 @@ void timer_manager_tick(void)
     }
 
     if (remaining_ticks == 0)
-    {
-        timer_active = false;
-        event_queue_push(EVENT_TIMEOUT);
-    }
+	{
+		if (event_queue_push(EVENT_TIMEOUT))
+		{
+			timer_active = false;
+		}
+	}
 }

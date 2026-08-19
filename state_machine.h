@@ -10,9 +10,15 @@ typedef enum {
 } SystemState;
 
 void state_machine_init(void);
+
 bool state_machine_reset(void);
+
 bool state_machine_set_state(SystemState new_state);
+
+bool state_machine_recover(void);
+
 SystemState state_machine_get_state(void);
+
 const char* state_machine_get_state_name(SystemState state);
 
 #endif

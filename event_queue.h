@@ -12,16 +12,21 @@ typedef enum {
 	EVENT_RESET,
     EVENT_UNKNOWN,
 	EVENT_TIMEOUT,
+	EVENT_FAULT_CLEARED,
+	
 	EVENT_COUNT
 } EventType;
 
 void event_queue_init(void);
 
 bool event_queue_push(EventType event);
+
 bool event_queue_pop(EventType *event);
 
 bool event_queue_is_empty(void);
+
 bool event_queue_is_full(void);
+
 int event_queue_size(void);
 
 #endif

@@ -27,3 +27,9 @@ void device_controller_apply_state(SystemState state)
             break;
     }
 }
+
+void device_controller_print_status(void)
+{
+    printf("LED State: %s\n",
+           led_driver_get_state_name());
+}

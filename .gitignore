@@ -10,3 +10,5 @@ obj/
 
 # Backup files
 *.bak
+
+*.depend

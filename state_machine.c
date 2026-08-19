@@ -29,6 +29,17 @@ bool state_machine_reset(void)
     return true;
 }
 
+bool state_machine_recover(void)
+{
+    if (current_state != STATE_ERROR)
+    {
+        return false;
+    }
+
+    current_state = STATE_IDLE;
+    return true;
+}
+
 const char* state_machine_get_state_name(SystemState state)
 {
     switch(state)

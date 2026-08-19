@@ -4,6 +4,7 @@
 #include "state_machine.h"
 #include "logger.h"
 #include "statistics_manager.h"
+#include "fault_manager.h"
 
 static bool start_handler(void);
 static bool stop_handler(void);
@@ -12,6 +13,7 @@ static bool help_handler(void);
 static bool error_handler(void);
 static bool reset_handler(void);
 static bool timeout_handler(void);
+static bool fault_cleared_handler(void);
 
 typedef struct
 {
@@ -27,7 +29,8 @@ static EventEntry event_table[] =
     { EVENT_HELP,   help_handler },
 	{ EVENT_ERROR, error_handler },
 	{ EVENT_RESET, reset_handler },
-	{ EVENT_TIMEOUT, timeout_handler }
+	{ EVENT_TIMEOUT, timeout_handler },
+	{ EVENT_FAULT_CLEARED, fault_cleared_handler },
 };
 
 void dispatch_event(EventType event)
@@ -94,6 +97,23 @@ static bool status_handler(void)
     printf("Current State: %s\n",
            state_machine_get_state_name(state));
 
+    device_controller_print_status();
+
+    int fault_count = fault_manager_get_fault_count();
+
+    printf("Active Faults: %d\n", fault_count);
+
+    for (int i = 0; i < fault_count; i++)
+    {
+        const FaultInfo *info =
+            fault_manager_get_fault_by_index(i);
+
+        if (info != NULL)
+        {
+            printf("  - %s\n", info->name);
+        }
+    }
+
     statistics_manager_print();
 
     return false;
@@ -124,10 +144,17 @@ static bool error_handler(void)
 
 static bool reset_handler(void)
 {
+    if (fault_manager_has_active_faults())
+    {
+        log_error("Reset rejected: active faults remain");
+        return false;
+    }
+
     bool success = state_machine_reset();
 
     if (success)
     {
+        fault_manager_reset();
         log_info("Device Reset");
     }
     else
@@ -149,6 +176,22 @@ static bool timeout_handler(void)
     else
     {
         log_error("Timer expired but state transition was rejected");
+    }
+
+    return success;
+}
+
+static bool fault_cleared_handler(void)
+{
+    bool success = state_machine_recover();
+
+    if (success)
+    {
+        log_info("Fault cleared - system returned to IDLE");
+    }
+    else
+    {
+        log_error("Fault cleared but state transition was rejected");
     }
 
     return success;

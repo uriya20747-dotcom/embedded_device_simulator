@@ -16,7 +16,7 @@ static CommandEntry commands[] =
     { "status", EVENT_STATUS },
     { "help",   EVENT_HELP },
 	{"error", EVENT_ERROR},
-	{ "reset", EVENT_RESET }
+	{ "reset", EVENT_RESET },
 };
 
 void process_command(const char *command)
